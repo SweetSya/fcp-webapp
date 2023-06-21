@@ -1,3 +1,12 @@
+# Tampilan Front End
+
+(./assets/Main)
+(./assets/Login)
+(./assets/Register)
+(./assets/Dashboard)
+(./assets/Task)
+
+
 # Web Application
 
 ## Final Course Project - Task Tracker Plus
