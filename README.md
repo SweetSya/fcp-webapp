@@ -1,10 +1,10 @@
 # Tampilan Front End
 
-![Main Page](./assets/gambarFE/Main)
-![Login Page](./assets/gambarFE/Login)
-![Register Page](./assets/gambarFE/Register)
-![Dashboard Page](./assets/gambarFE/Dashboard)
-![Task Page](./assets/gambarFE/Task)
+![Main Page](./assets/gambarFE/Main.png)
+![Login Page](./assets/gambarFE/Login.png)
+![Register Page](./assets/gambarFE/Register.png)
+![Dashboard Page](./assets/gambarFE/Dashboard.png)
+![Task Page](./assets/gambarFE/Task.png)
 
 
 # Web Application
