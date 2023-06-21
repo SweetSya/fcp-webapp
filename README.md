@@ -1,10 +1,10 @@
 # Tampilan Front End
 
-(./assets/Main)
-(./assets/Login)
-(./assets/Register)
-(./assets/Dashboard)
-(./assets/Task)
+![Main Page](./assets/gambarFE/Main)
+![Login Page](./assets/gambarFE/Login)
+![Register Page](./assets/gambarFE/Register)
+![Dashboard Page](./assets/gambarFE/Dashboard)
+![Task Page](./assets/gambarFE/Task)
 
 
 # Web Application
