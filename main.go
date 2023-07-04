@@ -120,6 +120,7 @@ func RunServer(db *gorm.DB, gin *gin.Engine) *gin.Engine {
 
 			user.Use(middleware.Auth())
 			user.GET("/tasks", apiHandler.UserAPIHandler.GetUserTaskCategory)
+			user.GET("/list", apiHandler.UserAPIHandler.GetList)
 		}
 
 		task := version.Group("/task")
@@ -131,6 +132,7 @@ func RunServer(db *gorm.DB, gin *gin.Engine) *gin.Engine {
 			task.DELETE("/delete/:id", apiHandler.TaskAPIHandler.DeleteTask)
 			task.GET("/list", apiHandler.TaskAPIHandler.GetTaskList)
 			task.GET("/category/:id", apiHandler.TaskAPIHandler.GetTaskListByCategory)
+			task.GET("/priority-one", apiHandler.TaskAPIHandler.GetTaskPriorityOne)
 		}
 
 		category := version.Group("/category")

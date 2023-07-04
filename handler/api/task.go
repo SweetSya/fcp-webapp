@@ -16,6 +16,7 @@ type TaskAPI interface {
 	GetTaskByID(c *gin.Context)
 	GetTaskList(c *gin.Context)
 	GetTaskListByCategory(c *gin.Context)
+	GetTaskPriorityOne(c *gin.Context)
 }
 
 type taskAPI struct {
@@ -114,6 +115,15 @@ func (t *taskAPI) GetTaskListByCategory(c *gin.Context) {
 		return
 	}
 	lists, err := t.taskService.GetTaskCategory(id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, model.ErrorResponse{Error: err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, lists)
+}
+
+func (t *taskAPI) GetTaskPriorityOne(c *gin.Context) {
+	lists, err := t.taskService.GetTaskPriorityOne()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, model.ErrorResponse{Error: err.Error()})
 		return

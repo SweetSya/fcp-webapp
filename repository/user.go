@@ -10,6 +10,7 @@ type UserRepository interface {
 	GetUserByEmail(email string) (model.User, error)
 	CreateUser(user model.User) (model.User, error)
 	GetUserTaskCategory() ([]model.UserTaskCategory, error)
+	GetList() ([]model.User, error)
 }
 
 type userRepository struct {
@@ -49,4 +50,12 @@ func (r *userRepository) GetUserTaskCategory() ([]model.UserTaskCategory, error)
 	}
 
 	return userTask, nil // TODO: replace this
+}
+
+func (r *userRepository) GetList() ([]model.User, error) {
+	var users []model.User
+	if fd := r.db.Find(&users); fd.Error != nil {
+		return []model.User{}, fd.Error
+	}
+	return users, nil
 }

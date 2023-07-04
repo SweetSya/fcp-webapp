@@ -13,6 +13,7 @@ type UserService interface {
 	Register(user *model.User) (model.User, error)
 	Login(user *model.User) (token *string, err error)
 	GetUserTaskCategory() ([]model.UserTaskCategory, error)
+	GetList() ([]model.User, error)
 }
 
 type userService struct {
@@ -94,4 +95,12 @@ func (s *userService) GetUserTaskCategory() ([]model.UserTaskCategory, error) {
 		return []model.UserTaskCategory{}, err
 	}
 	return userTaskCat, nil // TODO: replace this
+}
+
+func (s *userService) GetList() ([]model.User, error) {
+	users, err := s.userRepo.GetList()
+	if err != nil {
+		return []model.User{}, err
+	}
+	return users, nil
 }

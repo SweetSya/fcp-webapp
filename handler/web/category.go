@@ -42,7 +42,7 @@ func (c *categoryWeb) Category(ctx *gin.Context) {
 
 	categories, err := c.categoryClient.CategoryList(session.Token)
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, model.ErrorResponse{Error: "CategoryList!" + err.Error()})
+		ctx.JSON(http.StatusInternalServerError, model.ErrorResponse{Error: "CategoryList2!" + err.Error()})
 		return
 	}
 

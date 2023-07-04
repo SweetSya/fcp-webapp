@@ -64,7 +64,6 @@ func (d *dashboardWeb) Dashboard(c *gin.Context) {
 		c.Redirect(http.StatusSeeOther, "/client/modal?status=error&message="+err.Error())
 		return
 	}
-
 	err = t.Execute(c.Writer, dataTemplate)
 	if err != nil {
 		c.Redirect(http.StatusSeeOther, "/client/modal?status=error&message="+err.Error())

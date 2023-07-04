@@ -13,6 +13,7 @@ type TaskRepository interface {
 	GetByID(id int) (*model.Task, error)
 	GetList() ([]model.Task, error)
 	GetTaskCategory(id int) ([]model.TaskCategory, error)
+	GetTaskPriorityOne() ([]model.Task, error)
 }
 
 type taskRepository struct {
@@ -75,4 +76,12 @@ func (t *taskRepository) GetTaskCategory(id int) ([]model.TaskCategory, error) {
 		return []model.TaskCategory{}, fd.Error
 	}
 	return tasksCat, nil // TODO: replace this
+}
+
+func (t *taskRepository) GetTaskPriorityOne() ([]model.Task, error) {
+	var lists []model.Task
+	if fd := t.db.Model(model.Task{}).Where("priority = 1").Find(&lists); fd.Error != nil {
+		return []model.Task{}, fd.Error
+	}
+	return lists, nil
 }

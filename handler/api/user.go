@@ -12,6 +12,7 @@ type UserAPI interface {
 	Register(c *gin.Context)
 	Login(c *gin.Context)
 	GetUserTaskCategory(c *gin.Context)
+	GetList(c *gin.Context)
 }
 
 type userAPI struct {
@@ -82,6 +83,15 @@ func (u *userAPI) Login(c *gin.Context) {
 func (u *userAPI) GetUserTaskCategory(c *gin.Context) {
 	lists, err := u.userService.GetUserTaskCategory()
 
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, model.ErrorResponse{Error: "error internal server"})
+		return
+	}
+	c.JSON(http.StatusOK, lists)
+}
+
+func (u *userAPI) GetList(c *gin.Context) {
+	lists, err := u.userService.GetList()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, model.ErrorResponse{Error: "error internal server"})
 		return

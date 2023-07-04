@@ -14,6 +14,7 @@ func Auth() gin.HandlerFunc {
 		if err != nil {
 			if ctx.GetHeader("Content-Type") != "application/json" {
 				ctx.JSON(http.StatusSeeOther, model.ErrorResponse{Error: "Content-type undefined"})
+				ctx.Redirect(http.StatusSeeOther, "/")
 				return
 			}
 			if err == http.ErrNoCookie {
@@ -28,7 +29,6 @@ func Auth() gin.HandlerFunc {
 		claims := &model.Claims{}
 
 		token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (interface{}, error) {
-
 			return model.JwtKey, nil
 		})
 		if err != nil {

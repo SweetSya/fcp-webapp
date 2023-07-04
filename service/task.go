@@ -12,6 +12,7 @@ type TaskService interface {
 	GetByID(id int) (*model.Task, error)
 	GetList() ([]model.Task, error)
 	GetTaskCategory(id int) ([]model.TaskCategory, error)
+	GetTaskPriorityOne() ([]model.Task, error)
 }
 
 type taskService struct {
@@ -70,4 +71,11 @@ func (s *taskService) GetTaskCategory(id int) ([]model.TaskCategory, error) {
 		return []model.TaskCategory{}, err
 	}
 	return lists, nil // TODO: replace this
+}
+func (s *taskService) GetTaskPriorityOne() ([]model.Task, error) {
+	lists, err := s.taskRepository.GetTaskPriorityOne()
+	if err != nil {
+		return []model.Task{}, err
+	}
+	return lists, nil
 }
